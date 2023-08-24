@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>{{1+'.'+msg}}</h1>
+        <input type="text">
+        <h1>{{2+'.'+msg1}}</h1>
+        <p v-for="item in list"><input type="radio"name='sex' >{{item.sex}}</p>
+        <h1>{{3+'.'+msg2}}</h1>
+        <p v-for="item in list1"><input type="checkbox" >{{item.hobby}}</p>
+        <h1>{{4+'.'+msg3}}</h1>
+        <textarea name="" id="" cols="30" rows="20"></textarea>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#root',
+            data:{
+              msg:'请问您的姓名是?',
+              msg1:'请问您的性别是?',
+              msg2:'请问您的兴趣爱好是?',
+              msg3:'请介绍一下自己',
+              list:[
+            {sex:'男'},
+            {sex:'女'},
+            {sex:'保密'},
+            ],
+            list1:[
+            {hobby:'看书'},
+            {hobby:'游泳'},
+            {hobby:'跑步'},
+            {hobby:'听音乐'},
+            {hobby:'看电影'},
+            ],
+            }
+        })
+       
+    </script>
+</body>
+</html>

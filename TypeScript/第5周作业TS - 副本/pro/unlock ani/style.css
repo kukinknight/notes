@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #333;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.lock {
+  --u: 0px;
+  --c: #ff4757;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: var(--c);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.lock::after,
+.lock::before {
+  content: "";
+  position: absolute;
+  transform: translateY(var(--u));
+  transition: 0.5s;
+}
+.lock::before {
+  box-sizing: border-box;
+  width: 80px;
+  height: 120px;
+  border: 15px solid;
+  border-radius: 60px;
+  top: -60px;
+  border-color: var(--c) var(--c) transparent var(--c);
+  z-index: -2;
+}
+.lock::after {
+  width: 30px;
+  height: 50px;
+  background: #333;
+  left: 10px;
+  top: 0px;
+  z-index: -1;
+}
+.pass {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pass input {
+  width: 200px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  outline: none;
+  letter-spacing: 20px;
+}
+input::-ms-reveal {
+  display: none;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+    li{
+        margin: 5px 10px;
+        list-style: none;
+        width: 100px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+        float: left;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li ：class="indexof:includes(index)?'select':''" v-for= "(item,index) in list">{{item}}</li>
+            <button @click="startRandom">{{message}}</button>
+        </ul>
+    </div>
+    <script>
+    var vm = new Vue({
+        el:'#app',
+        indexof:'',
+        size:1,
+        interval:null,
+        message:'点我随机点名',
+        data:{
+            list: ["高银", "陈世凡", "罗欣宇", "龙昌鑫", "王坤澎", "万磊", "唐意",
+            "李钢武", "许安明", "王航", "陈洋鑫", "杨曦晨", "李文轩", "湛金梅", "赵梦娜", "伍湘瑾",
+            "张金玉", "尹意凡", "李根", "章晨宇", "邱龙权", "刘毅恒", "邹远航", "陈志杰", "吴瑞",
+            "肖鸿辉", "彭迁", "李灵", "徐钰琳", "李晓姣", "刘红", "刘云云", "韩鑫", "赵涵毅",
+            "黄谦", "邹阳", "胡炉信", "万铭武", "杨伦", "陈宇飞", "陈迪", "易晨阳", "沈晶晶",
+            "艾文萱", "卢云芳", "车红丽"] 
+            }
+    })
+    methods:{
+        startRandom(){
+            var that = this;
+            if(!this.interval){
+                message:'终止随机'
+                this.interval = setInterval(function(){
+                    var randomArr = [],
+                    for(var i =0;i<that.size;i++){
+                   randomArr.push(Math.floor(Math.random() *that.students))
+                    }
+                    that.indexof = randomArr;
+                },100)
+            }else{
+                this.message='点我随机开始';
+                this.interval='null'
+        }
+    }
+}
+
+    
+ 
+    </script>
+</body>
+</html>

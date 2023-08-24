@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        cnavas{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1000" height="600"></canvas>
+    <script src="Particle.js"></script>
+    <script>
+        let canvas = document.querySelector('canvas')
+        let c2d = canvas.getContext('2d')
+
+        let ParticleArray= []
+
+        for(var i = 0;i<400;i++){
+            ParticleArray.push(new Particle())
+        }
+      run()
+        function run(){
+            c2d.fillStyle= 'rgba(0,0,0,0.1)'
+            c2d.fillRect(0,0,canvas.width,canvas.height)
+
+            for(let Particle of ParticleArray){
+                Particle.draw(c2d)
+            }
+
+            requestAnimationFrame(run)
+        }
+    </script>
+</body>
+</html>

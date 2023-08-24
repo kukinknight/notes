@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2><a href="/insert">新增学生信息</a></h2>
+    <table border="1px">
+        <tr>
+            <td>学生信息表</td>
+        </tr>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>性别</td>
+        </tr>
+        <%data.forEach(function(item,index){  %>
+    
+        <tr>
+            <td><%=item.stuid%></td>
+            <td><%=item.name%></td>
+            <td><%=item.age%></td>
+            <td><span id="btnDel">删除</span><a href="/edit/<%=item.stuid%>">修改</a></td>
+        </tr>
+        <% }) %>
+    </table>
+    <a href="">首页</a>
+    <a href="">上一页</a>
+    <a href="">下一页</a>
+    <a href="">末页</a>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+  $(function(){
+    $('#btnDel').on('click','#btnDel',function(){
+        var td = $(this).parent().parent().find('td');
+        var lo_id = td[1].innerHTML;
+        var flag =confirm('你确定要删除吗')
+        if(flag){
+            $.ajax({
+                type:'GET', //什么样的请求
+                url:'//127.0.0.1:8081/del',
+                data:{id:lo_id},
+                success:function(){
+                 if(data.status==200){
+                    location.href='http://127.0.0.1:8081/queryStu'
+                 }
+                }
+            })
+        }else{
+            alert('取消')
+        }
+    })
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+一、电脑微信搜索  楚安君
+
+二、微信进入 知识竞赛
+
+三、获取当前网址网址，必须要有 unionId 
+
+
+
+
+(建议把自己wxid保存在记事本，方便查看链接)
+https://iptv.hbtv.com.cn/app/wx-answer/#/?unionId=owwX5slfb29Fg-abFjxvu1eHhglE
+https://网站地址/?unionId=唯一身份识别码
+https://iptv.hbtv.com.cn/app/wx-answer/#/?unionId=owwX123214142154151515315
+
+unionId暴露了会有危险吗
+
+https://developers.weixin.qq.com/community/develop/doc/00028808e9060860f03abf2fe5f400?highLine=unionId%25E6%259A%25B4%25E9%259C%25B2
+
+
+[练习]项目本地化
+1. (2分)在index.html中引入 网络样式表 https://2020wa.com/2021/css/3.css 
+2. (2分)在index.html中引入 网络样式表 index.css 
+3. (5分)将 姓名 的文件夹 改成自己中文命名，先引入fun.js 和 index.js 
+
+4. (5分) @@@@@@ 任务一 获取一个题目并运行在页面上
+5. (5分) @@@@@@ 任务二 获取所有的题目 for 循环
+
+
+
+
+------------------------------------------------------
+考点：不理解当前路径，文件路径。
+以当前文件作为目录的起点。
+./ 当前文件夹  可以省略
+./1.js  也可以写成 1.js
+./加油/1.js 也可以写成 加油/1.
+js
+
+../ 表示上层文件夹
+
+基本操作：
+1.创建目录 
+2.引入关联js、css文件。
+
+默认的Edge浏览器增加了额外的学习成本！
+推荐FireFox
+函数实参和形参
+
+
+通过网络请求访问网站 http协议 ✔
+        文件目录    file协议 ✖
+
+
+
+find方法。
+find方法用于搜索数组，并返回满足特定条件的第一个元素。在这种情况下，条件
+是数组中对象的id属性等于传递给getObjectById或getConstraintById函数的id参数。
+
+
+find方法将一个函数作为参数，用于测试数组中的每个元素。这个函数被称为“谓词”函数，
+它接受一个表示当前被测试元素的参数。在这种情况下，参数是obj。
+
+
+谓词函数中的return语句用于确定当前元素是否满足条件。如果当前元素的id属性等于传递给函数的id参数，
+那么return语句的计算结果将为true，find方法将返回该元素。
+
+因此，总而言之，代码块jsonData.find中的return语句（函数（obj）｛return obj.id＝＝id；｝）；
+用于确定被测试的当前元素是否满足具有等于传递到函数中的id参数的id属性的条件。
+
+-------------------------
+注释一段代码:  选中 Ctrl+/
+

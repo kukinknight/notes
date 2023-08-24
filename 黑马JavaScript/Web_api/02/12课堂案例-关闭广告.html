@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner {
+            height: 60px;
+            background-color: pink;
+        }
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: right;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <span>X</span>
+    </div>
+    <script>
+        let span = document.querySelector('span')
+        let div = document.querySelector('div')
+        span.addEventListener('click',function(){
+         div.style.display = 'none'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>课工场论坛列表</title>
+    <link href="csss.css" rel="stylesheet">
+</head>
+<body>
+<div class="bbs">
+    <header><span onclick="showPost();">我要发帖</span></header>
+    <section>
+        <ul>
+            <!--    <li>
+                  <div>
+                      <img src="images/tou01.jpg" alt="">
+                  </div>
+                  <h1>如何学习前端Web开发课程</h1>
+                  <p><span>版块：新课来了</span> <span>发表时间：2016-7-13 17:9</span></p>
+               <> -->
+        </ul>
+    <ction>
+    <div class="post">
+        <input class="title" placeholder="请输入标题（1-50个字符）">
+        所属版块：<select class="block"><option>请选择版块</option><option>电子书籍</option><option>新课来了</option><option>新手报到</option><option>职业规划</option><lect>
+        <textarea class="content"></textarea>
+        <input class="btn" onclick="post();" value="发布">
+    </div>
+</div>
+
+<script>
+    function getFormatDate() {
+        var date = new Date();//获取系统当前时间
+        var month = date.getMonth() + 1;//月
+        var strDate = date.getDate();//天
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentDate = date.getFullYear() + "-" + month + "-" + strDate
+            + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        return currentDate;
+    }
+
+    function showPost(){
+        var a = document.getElementsByClassName("post")[0].style.display = "block";
+        clearValue('title');
+        clearValue('block');
+        clearValue('content');
+    }
+
+    function  clearValue(element){
+        var value = document.getElementsByClassName(element)[0].value;
+        if(value.length > 0){
+            var value = document.getElementsByClassName(element)[0].value = "";
+
+
+        }
+    }
+    function post(){
+        /* 获取发帖标题内容 */
+        var title = document.getElementsByClassName("title")[0].value;
+        /* 获取select标签的内容 */
+        var option1 = document.getElementsByClassName("block")[0].value;
+        /* 获取文本域的内容 */
+        var text = document.getElementsByClassName("content")[0].value;
+        /* 创建节点 */
+        var li = document.createElement("li");
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        var h1 =  document.createElement("h1");
+
+        h1.innerHTML = title;
+
+        //使用数组保存发帖者的头像
+        var imgArray = ["images/tou01.jpg","images/tou02.jpg","images/tou03.jpg","images/tou04.jpg"];
+        //生成 0 到 数组长度之间的随机数
+
+        //使用函数floor( )和random()随机获取发帖者的头像
+        var random1 = Math.floor(Math.random()*imgArray.length);
+        // console.log(imgArray[random1]);
+        img.setAttribute("src",imgArray[random1]);
+        /* 把img节点放入到div里 */
+        div.appendChild(img);
+        var p = document.createElement("p");
+        var span = document.createElement("span");
+        //创建文本节点
+        var text = document.createTextNode("版块："+ option1);
+        //添加文本节点
+        span.appendChild(text);
+        //将span节点添加到 p元素
+        p.appendChild(span);
+        // var myDate = new Date(); //获取系统当前时间
+
+        var spanDate = document.createElement("span");
+        //创建文本节点
+        var text2 = document.createTextNode("发表时间："+ getFormatDate());
+        spanDate.appendChild(text2);
+        p.appendChild(spanDate);
+        /.appendChild(div).appendChild(p).appendChild(h1);
+        li.appendChild(div);
+        li.appendChild(h1);
+        li.appendChild(p);
+
+        //得到要写入的ul元素
+        document.getElementsByTagName("ul")[0].appendChild(li);
+        document.getElementsByClassName("post")[0].style.display = "none";
+
+
+    }
+
+</script>
+</body>
+<ml>

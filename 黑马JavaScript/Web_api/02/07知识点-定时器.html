@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定时器(间歇函数)
+        // 特点: 隔一段时间执行一次 (时间间隔是可以自己控制的)
+        // 应用场景: 网页中倒记时, 轮播图  注册协议....
+
+        // 定时器使用:
+        // 定时器本质就是一个函数,函数会自己隔一段时间自己调用,不需要我们手动调用
+
+        // 开启语法:
+        // setInterval(function(){}, 时间间隔)
+
+        // 注意: 时间间隔单位是毫秒
+
+
+        // 代码演示:
+        let id = setInterval(function(){
+            console.log('呵呵呵');
+        }, 1000);
+
+        // 如何停止定时器?
+        // 语法:  clearInterval(定时器ID);
+        // 注意: 
+        // 停止定时器的时候,定时器id不能自己随便定义的
+        // 定时器id通过定时器的返回值得到
+        clearInterval(id);
+       
+    </script>
+</body>
+</html>

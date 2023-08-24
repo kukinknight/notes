@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <style>
+    canvas{background-color: pink;}
+    img{width: 50px;height: 50px;}
+    </style>
+</head>
+<img id="img1" src="img/21级新前端1班/杨曦晨.jpg" >
+<img id="img2" src="img/21级新前端1班/王航.jpg" >
+<img id="img3" src="img/21级新前端1班/陈洋鑫.jpg" >
+<img id="img4" src="img/21级新前端1班/李钢武.png" >
+<canvas width="1000" height="1000"></canvas>
+
+<script src="js/小组元宇宙.js"></script>
+<script>
+let canvas = document.querySelector('canvas')
+let c2d = canvas.getContext('2d')
+
+let imgArr = [img1,img2,img3,img4]  //存放组员的头像
+
+let arr = []    //存放组员
+let 组长 = new 圆头像(img2,500,500,50)
+arr.push(
+    new 圆头像(img1,250,250),
+    new 圆头像(img3,250,750),
+    new 圆头像(img4,750,250),
+    new 圆头像(img3,750,750)
+)
+
+
+for(let 组员 of arr){   //设置起始角度
+    组员.起始角度(组长)
+}
+
+const rainbowColors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+run()
+function run(){
+    // c2d.clearRect(0,0,1000,1000)    //清除画布
+    组长.画(c2d)
+
+    for(let 组员 of arr){
+        组员.画(c2d)
+        组员.线(c2d,组员,组长)
+        组员.三次曲线(c2d,组员,组长,'green')
+        
+        // 组员.运动()
+        组员.圆周运动(组长)
+    }
+    requestAnimationFrame(run)
+}//run
+
+
+</script>
+
+
+
+
+
+
+

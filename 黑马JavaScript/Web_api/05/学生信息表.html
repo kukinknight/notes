@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./学生信息表.css" />
+</head>
+<body>
+    <h1>新增学员</h1>
+    <form class="info" autocomplete="off">
+      姓名：<input type="text" class="uname" name="uname" />
+      年龄：<input type="text" class="age" name="age" />
+      性别:
+      <select name="gender" class="gender">
+        <option value="男">男</option>
+        <option value="女">女</option>
+      </select>
+      薪资：<input type="text" class="salary" name="salary" />
+      就业城市：<select name="city" class="city">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+        <option value="曹县">曹县</option>
+      </select>
+      <button class="add">录入</button>
+    </form>
+  
+    <h1>就业榜</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>薪资</th>
+          <th>就业城市</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td>1001</td>
+            <td>欧阳霸天</td>
+            <td>19</td>
+            <td>男</td>
+            <td>15000</td>
+            <td>上海</td>
+            <td>
+              <a href="javascript:">删除</a>
+            </td>
+          </tr>  
+
+        </tbody>
+    </table>
+
+    <script>
+
+        
+     // 1. 功能1: 用户点击录入按钮,保存学生信息
+     // a) 保存多个学生信息  --- 准备一个数组   (数组中保存的就是一个个的学生对象)
+     // b) 每一个学生信息  --- 学生对象
+     // c) 学生对象有属性: 姓名, 年龄, 性别, 薪资, 城市
+     // 总结: 用户输入的每一个值要保存到学生对象中,然后学生对象保存到数组中
+     // 代码实现:
+     let ary = [] 
+        let uname = document.querySelector('.uname')
+        let age = document.querySelector('.age')    
+        let gender = document.querySelector('.gender')
+        let salary = document.querySelector('.salary')
+        let city= document.querySelector('.city')
+        let add= document.querySelector('.add')
+        let tbody = document.querySelector('tbody')
+        
+     // 定义一个变量,保存学生学号
+     let num = 2022080;
+        add.addEventListener('click',function(e){
+             // 阻止默认行为
+         e.preventDefault();
+          // 定义一个学生对象保存用户输入的数据
+          let Student = {
+           setID: ++num,
+            setName:uname.value,
+            setAge:age.value,
+            setGender:gender.value,
+            setSalary:salary.value,
+            setCity:city.value
+          }
+           // 将学生信息保存到数组中
+           ary.push(Student)
+              // 根据数组信息,进行渲染数据
+         loadStudent(ary);
+        })
+         // 2. 功能2: 根据保存的学生信息,要在页面中进行渲染显示
+        function loadStudent(stuList){
+            // 先将页面中的数据清空 (排他思想)
+            tbody.innerHTML = ''
+             // 获取到数据了,根据数据在页面中渲染标签
+             // 遍历数组
+            for(let i =0;i<stuList.length;i++){
+                // 创建节点:
+                let tr = document.createElement('tr')
+                   // 在tr标签中添加内容
+                tr.innerHTML =`
+                <td>${stuList[i].setID}</td>
+                <td>${stuList[i].setName}</td>
+                <td>${stuList[i].setAge}</td>
+                <td>${stuList[i].setGender}</td>
+                <td>${stuList[i].setSalary}</td>
+                <td>${stuList[i].setCity}</td>
+                <td>
+                     <a href="javascript: data-index="${i}">删除</a>
+                  </td>
+                `
+                 // 将tr标签追加到tbody标签中
+            tbody.appendChild(tr)
+            }
+        }
+         // 页面打开的时候立马调用函数
+        loadStudent(ary)
+
+         // 3. 功能3: 删除数据 (通过事件委托的方式实现)
+         tbody.addEventListener('click', function(e) {
+          // 获取事件源
+          let btn = e.target;
+          if(btn.tagName === 'A') {
+              // 代表点击删除a标签, 需要将数组中的数据删除
+              // 获取到当前标签的自定义属性值即可
+              let myindex = btn.dataset.index;
+              ary.splice(myindex, 1);
+              // 重新渲染页面
+              loadStudent(ary);
+          }
+     });
+    </script>
+</body>
+</html>

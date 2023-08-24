@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <script>
+          // 名字
+          let names=  ['安鑫', '彭宇航', '张适旗', '杨波', '王磊', '刘振东', '样吸尘'];
+
+        // 要求: 随机从数组中取出一个名字,显示到网页中 (随机点名)
+         
+        // 代码实现:
+        // a)从数组中取值,最重要的是什么? 最重要的就是数组的索引 ===> 只要知道了索引
+        // b)数组的索引是整数
+        // c)随机产生一个整数  ====> 随机获取一个名字
+        // d)随机产生的整数范围: [0, 数组的长度 - 1 ];
+
+        // 代码完成:
+        let i = Math.floor(Math.random()* names.length)
+        document.write(`请${names[i]}回答问题`)
+    </script>
+</body>
+</html>

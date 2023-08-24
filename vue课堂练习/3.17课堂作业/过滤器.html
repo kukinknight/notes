@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak></div>
+    <script>
+        
+//全局过滤器，定义在script中
+Vue.filter('reverse',function(value){
+                if(!value){
+                        return
+                    }else{
+                        return (value+'').split('').reverse().join('')/1;
+                    }
+             })
+        let AppComponent={
+            data() {
+                return {
+                    num:1234
+                }
+            },
+            template:`
+            <div>
+                {{num | reverse}}
+                </div>
+
+            `,
+        }
+
+        var vm = new Vue({
+        el:'#app',
+         components:{
+            AppComponent
+         },
+         template:`
+        <div>
+            <app-component></app-component>
+            </div>
+
+         `
+       })
+    </script>
+</body>
+</html>

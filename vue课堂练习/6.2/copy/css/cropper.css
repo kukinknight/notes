@@ -1,0 +1,109 @@
+body{
+	margin:10px; 
+	padding:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+*{
+	box-sizing: border-box;
+}
+#action{
+	position:relative;
+}
+#container{
+	position:relative;
+}
+#image{
+	position: relative;
+	background-color: #FFF;
+}
+#front-image{
+	max-width: 500px;
+	position:absolute;
+	z-index:2;
+}
+#back-image{
+	max-width: 500px;
+	position:absolute;
+	z-index:1;
+	opacity:0.3;
+}
+#selection{
+	border:2px dashed #FFF;
+	position:absolute;
+	z-index:5;
+	cursor:move;
+}
+#selection span{
+	position:absolute;
+	background-color:#333;
+	width: 10px;
+	height: 10px;
+}
+#selection span img{
+	position:absolute;
+	width:10px;
+}
+#result img{
+	margin-right:10px;
+}
+
+.handler-nw{
+	left:0;
+	top:0;
+	cursor: nw-resize;
+}
+
+.handler-n{
+	left:50%;
+	top:0;
+	margin-left: -5px;
+	cursor: n-resize;
+}
+
+.handler-ne{
+	right:0;
+	top:0;
+	cursor: ne-resize;
+}
+
+.handler-sw{
+	left:0;
+	bottom:0;
+	cursor: sw-resize;
+}
+
+.handler-s{
+	left:50%;
+	bottom:0;
+	margin-left: -5px;
+	cursor: s-resize;
+}
+
+.handler-se{
+	right:0;
+	bottom:0;
+	cursor: se-resize;
+}
+
+.handler-w{
+	left:0;
+	top:50%;
+	margin-top: -5px;
+	cursor: w-resize;
+}
+
+.handler-e{
+	right:0;
+	top:50%;
+	margin-top: -5px;
+	cursor: e-resize;
+}
+
+.handler{
+	width:10px;
+	position:absolute;
+}
+#result img{
+	width:100px; 
+}

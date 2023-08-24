@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>克鲁苏之眼</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            position: fixed;
+            /* 网页背景色 */
+            background: rgb(0, 0, 0);
+             /* background-color: pink;  */
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1000" height="1000"></canvas>
+
+    <script src="js/tentacle.js"></script>    
+    <script src="js/segment.js"></script>
+    <script src="js/fun.js"></script>
+    <script src="js/蓝色蜘蛛函数事件.js"></script>
+<script>
+let canvas = document.querySelector('canvas')
+let c2d = canvas.getContext('2d')
+    // 设置canvas的宽度为窗口内宽度，高度为窗口内高度
+    c2d.fillStyle = "rgba(30,30,30,1)"
+
+ let  W = (canvas.width = window.innerWidth),
+    H = (canvas.height = window.innerHeight),
+    // 初始化鼠标对象
+    mouse = { x: false, y: false },
+    last_mouse = {}
+
+// 初始化变量
+let maxl = 400,//触手的最大长度
+    minl = 50,//触手的最小长度
+    n = 30,//触手的段数
+    numt = 600,
+    tentArr = [],//触手的数组
+    clicked = false,//鼠标是否被按下
+    nowPoint = { x: 300, y: 300 }, //触手的目标点
+    oldPoint = {},//上一个触手的目标点 oldPoint
+    t = 0,//当前时间
+    stepLen = 10;//触手每次移动的步长
+
+// 创建触手对象
+for (let i = 0; i < 600; i++) {
+    let x = Math.random() * W
+    let y = Math.random() * H
+    let l = Math.random() * (maxl - minl) + minl    //50~400 
+    let a = Math.random() * 2 * Math.PI
+    let one = new 触手(x, y, l, n, a)
+    tentArr.push(one)
+}
+
+
+
+run()
+
+function run(){//动画主循环函数
+    c2d.clearRect(0, 0, W, H)
+
+
+    change()
+
+    // 绘制所有触手的中心点
+    drawHead()
+    // 绘制所有触手
+    for (i = 0; i < numt; i++) {
+        tentArr[i].move(oldPoint, nowPoint)
+        tentArr[i].showPoint(nowPoint)
+
+        tentArr[i].showHand(nowPoint)
+    }
+
+
+
+    
+
+
+    requestAnimationFrame(run)
+}//结束function
+
+
+    
+
+
+</script>
+<script src="js/event.js"></script>
+
+</body>
+
+</html> 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+   <script>
+    // 绑定事件
+    // 1.获取事件源(DOM标签对象)
+    // 2.给事件源绑定事件
+    // 事件源.addEventListener('事件类型',function(){})
+
+       let div = document.querySelector('div')
+       div.addEventListener('click',function(){
+        div.style.background ='red'
+       })
+   </script> 
+</body>
+</html>

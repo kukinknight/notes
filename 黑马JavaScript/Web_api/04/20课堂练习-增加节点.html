@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮">
+    <script>
+        
+        // 要求: 
+        // 根据数组中的值,在页面中创建列表标签
+        let ary = ['李鑫宇', '张适旗', '老段', '二姐', '狗哥', '老汤', '马超'];
+
+        let input = document.querySelector('input')
+        let body = document.body
+        input.addEventListener('click',function(){
+            let ul = document.createElement('ul')
+            body.append(ul)
+            for(let i =0;i<ary.length;i++){
+                let li =document.createElement('li')
+                li.innerHTML = ary[i]
+                ul.append(li)
+                li.style.listStyle = 'none'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+       let baseMixin={
+          data() {
+            return {
+                name:"张三",
+                age:20
+            }
+          },
+          methods: {
+            hellow(value){
+                alert(value)
+            }
+          },
+       }
+
+       let AppComponent = {
+        data(){
+            return {
+                sid:'20210101'
+            }
+        },
+        mixins:[baseMixin],
+
+        created() {
+            console.log(this)
+        },
+
+        template:`
+         <div>{{name}}
+            <button @click='hello(name)'>show</button>
+            </div>
+      
+        `
+       }
+
+       var vm = new Vue({
+        el:'#app',
+         components:{
+            AppComponent
+         },
+         template:`
+        <div>
+            <app-component></app-component>
+            </div>
+
+         `
+       })
+    </script>
+</body>
+</html>

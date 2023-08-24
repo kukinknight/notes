@@ -1,0 +1,59 @@
+{
+    "answer": "A,B,C,D",    //正确答案
+    "answerDoubt": "",
+    "answerSheet": [    //选项
+        {
+            "name": "“领事之声”微博",
+            "value": "A"
+        },
+        {
+            "name": " 中国领事服务网",
+            "value": "B"
+        },
+        {
+            "name": "“领事直通车”微信公众号",
+            "value": "C"
+        },
+        {
+            "name": "全球领事保护与服务应急呼叫中心",
+            "value": "D"
+        }
+    ],
+    "createdTime": "2023-03-31 09:11:46",
+    "endTime": null,
+    "groupId": 143,
+    "id": 2287,
+    "media": null,
+    "score": 10,
+    "status": "enable",
+    "title": "我国外交部领事司的公众服务平台有（  ）。",
+    "type": "3",    //3多选题
+    "updatedTime": "2023-03-31 09:11:46"
+}
+
+
+
+
+
+
+{
+    "answer": "国家重点领域",
+    "answerDoubt": "",
+    "answerSheet": null,
+    "createdTime": "2023-03-31 09:11:46",
+    "endTime": null,
+    "groupId": 143,
+    "id": 2291,
+    "media": [
+        {
+            "ossurl": "https://iptv-activity-vote-bucket.oss-cn-hangzhou.aliyuncs.com/iptv-activity-pro/video/gadt20230330-zm/13%20%E7%A7%91%E6%8A%80%E5%AE%89%E5%85%A8-zm.mp4",
+            "src": "https://iptv-activity-vote-bucket.iptv.hbtv.com.cn/iptv-activity-pro/video/gadt20230330-zm/13%20%E7%A7%91%E6%8A%80%E5%AE%89%E5%85%A8-zm.mp4",
+            "type": "video"
+        }
+    ],
+    "score": 10,
+    "status": "enable",
+    "title": "科技安全是指科技体系完整有效，__________核心技术安全可控，国家核心利益和安全不受外部科技优势危害，以及维护科技持续发展的能力。（来源：宁夏回族自治区科学技术厅）",
+    "type": "4",
+    "updatedTime": "2023-03-31 09:11:46"
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="change">切换天气</button>
+        <hr>
+        <div>a的值是{{numbers.a}}</div>
+        <br>
+        <button @click="change1">点我让a加一</button>
+        <br>
+        <div>b的值是{{numbers.b}}</div>
+        <br>
+        <button @click="change2">点我让b加一</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                Toinfo: true,
+                numbers: {
+                    a: 1,
+                    b: 1
+                }
+
+            },
+            computed: {
+                info() {
+                    return this.Toinfo ? '炎热' : '寒冷'
+                }
+            },
+            methods: {
+                change() {
+                    this.Toinfo = !this.Toinfo
+                },
+                change1() {
+                    this.numbers.a++
+                },
+                change2() {
+                    this.numbers.b++
+                }
+            },
+            watch: {
+                numbers: {
+                    deep: true,
+                    handler() {
+                        console.log('number改变了')
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

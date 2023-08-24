@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>列表</li>
+        </ul>
+        <p>段落</p>
+        <h1>标题</h1>
+        <span>span标签</span>
+        <p>段落2</p>
+        <input type="text">
+        <p>段落3</p>
+        <a href="#">连接</a>
+    </div>
+    <script>
+
+        // 获取兄弟元素
+        // a) 获取当前标签前一个兄弟元素: DOM标签对象.previousElementSibling
+        // b) 获取当前标签后一个兄弟元素: DOM标签对象.nextElementSibling
+
+        // 总结:
+        // 1) 获取到的兄弟元素是一个DOM标签对象
+
+        // 代码演示:
+        let span = document.querySelector('span');
+        console.log(span.previousElementSibling.previousElementSibling);
+        console.log(span.nextElementSibling.nextElementSibling);
+
+    </script>
+</body>
+</html>

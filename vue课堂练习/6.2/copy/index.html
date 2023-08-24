@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>网页裁剪</title>
+  <link rel="stylesheet" href="./css/cropper.css">
+  <script src="./js/vue.js"></script>
+  <script src="./js/cropper.js"></script>
+</head>
+
+<body>
+  <div id="app" tabindex="0" @keyup.enter="onEnterKeyup" style="outline: none;">
+    <p id="action">
+      <input type="file" id="file" @change="onImageLoaded" ref="file" />
+      <span> | size: {{size}} | action: {{actionType}}</span>
+    </p>
+    <div id="container" @mousedown="onMousedown" @mouseup="onMouseup" @mousemove.prevent="onMousemove">
+      <div id="image">
+        <img id="front-image" ref="image" :src="imageSrc" :style="clip">
+        <img :src="imageSrc" id="back-image">
+      </div>
+
+      <div id="selection" v-if="cropper && cropper.selection" :style="selectionStyle" @mousedown.stop="onMoveMousedown">
+        <resize-handler v-for="(pos,index) in positions" :position="pos" :key="index"
+          @resize-handler-mousedown="onResizeMousedown"></resize-handler>
+      </div>
+      <p>设置选区后，请按回车键确定剪裁结果：</p>
+      <div id="result">
+        <img v-for="(item,index) in images" :src="item.image.src" :key="index">
+      </div>
+    </div>
+  </div>
+  <script>
+    let resizeHandler = {
+      template: `
+            <img 
+                src="dot.gif"
+                :class="'handler handler-'+position"
+                :data-position="position"
+                @mousedown.stop.prevent="onMousedown"
+            >`,
+      props: ["position"],
+      methods: {
+        onMousedown(event) {
+          this.$emit("resize-handler-mousedown", event)
+        }
+      }
+    }
+
+    let vm = new Vue({
+      el: "#app",
+      components: { resizeHandler },
+      data: {
+        cropper: null,
+        images: [],
+        positions: ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'],
+        position: '',
+        actionType: '',
+        imageSrc: '',
+        offsetX: 0,
+        offsetY: 0,
+        startX: 0,
+        startY: 0,
+        endX: 0,
+        endY: 0
+      },
+      computed: {
+        size() {
+          if (this.cropper)
+            return `${this.cropper.displayWidth} x ${this.cropper.displayHeight}
+                       (${this.cropper.image.width} x ${this.cropper.image.height})`
+        },
+        clip() {
+          if (!this.cropper || !this.cropper.selection)
+            return null
+          let { x: left, y: top, x2: right, y2: bottom } = this.cropper.selection
+          return { clip: `rect(${top}px, ${right}px, ${bottom}px, ${left}px)` }
+        },
+        selectionStyle() {
+          if (!this.cropper || !this.cropper.selection)
+            return null
+          let { x: left, y: top, width, height } = this.cropper.selection
+          return { left: left + 'px', top: top + 'px', width: width + 'px', height: height + 'px' }
+        }
+      },
+      methods: {
+        onImageLoaded() {
+          let reader = new FileReader()
+          reader.readAsDataURL(this.$refs.file.files[0])
+          reader.onloadend = (event) => {
+            const image = new Image()
+            this.imageSrc = event.target.result
+            image.src = this.imageSrc
+            image.onload = () => {
+              const width = this.$refs.image.clientWidth
+              const height = this.$refs.image.clientHeight
+              this.$refs.image.parentElement.style.height = height + 'px'
+              this.$refs.image.parentElement.style.width = width + 'px'
+              this.cropper = new Cropper(image, width / image.width)
+              this.offsetX = this.$refs.image.getBoundingClientRect().left,
+                this.offsetY = this.$refs.image.getBoundingClientRect().top,
+                this.$refs.file.blur()
+            }
+          }
+        },
+        onMousedown(event) {
+          console.log("d1", event.currentTarget.id)
+          this.startX = event.pageX - this.offsetX
+          this.startY = event.pageY - this.offsetY
+          this.actionType = 'draw'
+        },
+        onMoveMousedown(event) {
+          console.log("d2", event.currentTarget.id)
+          this.startX = event.pageX - this.offsetX
+          this.startY = event.pageY - this.offsetY
+          this.endX = this.startX
+          this.endY = this.startY
+          this.actionType = 'move'
+        },
+        onResizeMousedown(event) {
+          this.position = event.currentTarget.dataset.position
+          console.log("d3", this.position)
+          this.startX = event.pageX - this.offsetX
+          this.startY = event.pageY - this.offsetY
+          this.endX = this.startX
+          this.endY = this.startY
+          this.actionType = 'resize'
+        },
+        onMouseup(event) {
+          console.log("u1", event.currentTarget.id)
+          this.actionType = ''
+        },
+        onMousemove(event) {
+          if (this.actionType === '')
+            return
+
+          const tx = this.endX
+          const ty = this.endY
+          this.endX = event.pageX - this.offsetX
+          this.endY = event.pageY - this.offsetY
+
+          //绘制选区
+          const rect = new Rect(
+            this.startX,
+            this.startY,
+            this.endX - this.startX,
+            this.endY - this.startY
+          )
+
+          if (this.actionType === 'draw')
+            this.cropper.drawSelection(rect)
+
+          //移动选区
+          if (this.actionType === 'move')
+            this.cropper.move({ dx: this.endX - tx, dy: this.endY - ty })
+
+          //调整选区大小
+          if (this.actionType === 'resize') {
+            if (this.position.includes('w'))
+              this.cropper.resizeLeft(this.endX - tx)
+            if (this.position.includes('e'))
+              this.cropper.resizeRight(this.endX - tx)
+            if (this.position.includes('n'))
+              this.cropper.resizeTop(this.endY - ty)
+            if (this.position.includes('s'))
+              this.cropper.resizeBottom(this.endY - ty)
+          }
+        },
+        onEnterKeyup() {
+          if (this.cropper.selection) {
+            const image = this.cropper.crop()
+            this.images.push({ image, width: this.cropper.selection.width + "px" })
+          } else
+            alert("请先拖拽鼠标确定选区")
+        }
+
+      }
+    });
+  </script>
+</body>
+
+</html>

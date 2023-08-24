@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   var z = 0
+			let str = ["America","Greece","Britain","Canada","China","Egypt"];
+			for(var i = 0;i<str.length;i++){
+				document.write(str[i]+"<br/>")
+				var x = str[i].indexOf("a");
+				var y = str[i].indexOf("A")
+				if(x>=0 || y>=0)
+				z++
+			}
+			document.write("共有"+z+"个字符串包含a或A")
+   </script> 
+</body>
+</html>

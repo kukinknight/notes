@@ -1,0 +1,13 @@
+.container {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    overflow: hidden;
+  }
+  
+  .like-pic {
+    position: absolute;
+    bottom: 50px;
+    left: calc((500px - 30px) / 2);
+  }
+  

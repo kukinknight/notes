@@ -1,0 +1,225 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root{
+	font-size: 10px;
+
+	--w:7rem;
+	--h:8.4rem;
+}
+
+body {
+	padding: 20px;
+	/* background: url(https://2020wa.com/2022/open/gift/img/bg61.jpg); */
+
+	background-image: url(../img/bg.jpg);
+	background-size: 100%;
+	background-attachment: fixed; 
+	margin-top: 50px;
+
+}
+
+
+.b{
+	/* border: 1px solid gold; */
+}
+
+
+#C{
+	width: 30rem;
+	font-size: 5rem;
+
+	
+	text-align: center;
+
+	text-shadow: 3px 3px 1px #111;
+	margin: 4rem auto;
+	color: gold;
+	
+}
+
+
+#A {
+	width: 135rem;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+
+#A div {
+
+/* 	border: 1px solid red; */
+	text-align: center;
+	padding: 5px 0px;
+	color: red;
+	font-weight: 800;
+	/* 字体粗细 */
+	/* 	background-color: white; */
+	margin: 1px;
+	
+}
+
+#A div.s {
+	/* class="s" */
+	background-color: gold;
+	border: 1px solid black;
+	box-shadow: 0px 0 3px 5px gold;
+
+
+	
+	
+
+}
+
+.no {
+	background-color: gainsboro !important;
+}
+
+
+.giftBox {
+	width: var(--w);
+	height:  var(--h);
+	background-image: url(../img/福包.png);
+	background-size: cover;
+	cursor: pointer;
+
+	position: relative;
+}
+
+.giftBox i,
+.open_pick i{
+	position: absolute;
+	top:1rem;
+	left: 2.5rem;
+	color: #e32527;
+}
+
+.giftBox:hover ,.move{
+	animation:aa .2s infinite;
+
+}
+
+
+
+.pick{
+	
+}
+
+.open_pick{
+	position: relative;
+
+	opacity: 0.5;
+	user-select: none;
+	width: var(--w);
+	height:  var(--h);
+	background-image: url(../img/打开2.png);
+	background-size: cover;
+	cursor: pointer;
+}
+
+.open{
+	opacity: 0.4;
+	user-select: none;
+	width: var(--w);
+	height:  var(--h);
+	background-image: url(../img/打开2.png);
+	background-size: cover;
+	cursor: pointer;
+}
+
+
+.yao{
+	animation:aa .2s infinite;
+}
+
+
+.open_pick{
+	color: #f18e3d !important;
+}
+
+#blackDiv{
+
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:3;
+	background-color:#000;
+	opacity:0.6;
+	display: block;
+}
+
+
+#show {
+	/* width: 40rem; */
+	/* 1.33 */
+	/* height: 30rem; */
+	/* border: 2px solid gold; */
+	width: 45rem;
+	height: 60rem;
+
+	position: absolute;
+	top: 50%;
+	margin-top: -30rem;
+	margin-left: -22.5rem;
+	left: 50%;
+	visibility: hidden;
+	border-radius: 5px;
+
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* background-color: wheat; */
+	z-index:4;
+}
+
+
+
+#show img.myImg {
+	width: 32rem;
+	height: 42rem;
+	border: 0.2rem solid gold;
+
+	border-radius: 1rem;
+
+	box-shadow: 0.2rem 0.4rem 1rem 0.5rem gold;
+
+
+}
+
+#show span {
+	margin-top: 1rem;
+	background-color: gold;
+	padding: 0.3rem 3rem;
+	cursor: pointer;
+
+	border: .2rem solid  white;
+	font-size: 1.6rem;
+}
+#show h2{
+	margin-bottom: .3rem;
+	color: red;
+	font-size: 4.5rem;
+}
+
+#btn{
+	display: flex;
+	margin: 0 auto;
+
+
+	background-color: gold;
+	padding: 0.3rem 3rem;
+	cursor: pointer;
+	border: .2rem solid white;
+	font-size: 1.6rem;
+	position: relative;
+	z-index:50;
+}

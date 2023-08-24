@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    
+        <style>
+        /* 防止在加载中，  将{{}} 加载出来 */
+        [v-cloak]{
+            display: none;
+        }
+        .swiper-main{width:700px;height:350px;position:relative;z-index:1;}
+        .swiper-main .swiper-wrap{width:100%;height:100%;}
+        .swiper-main .swiper-wrap .slide{width:100%;height:100%;position: absolute;z-index:1;left:0;top:0;}
+        .swiper-main .swiper-wrap .slide img{width:100%;height:100%;}
+        .swiper-main .page{width:auto;height:auto;position:absolute;z-index:2;left:50%;bottom:10%;
+        transform: translateX(-50%);
+        -webkit-transform:translateX(-50%);white-space: nowrap;text-align: center;}
+        .swiper-main .page .item{width:30px;height:10px;background-color: rgba(255,255,255,0.8);
+        cursor:pointer;display:inline-block;
+        margin-right:2.5px;margin-left:2.5px;}
+        .swiper-main .page .item.active{background-color: rgba(0,0,0,0.8);}
+
+        .slide-enter{
+            opacity:0;
+        }
+        .slide-enter-to{
+            opacity:1;
+        }
+        .slide-leave{
+            opacity:1;
+        }
+        .slide-leave-to{
+            opacity:0;
+        }
+        .slide-enter-active,.slide-leave-active{
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        let SwiperComponent={
+           props:{
+             data:{
+                type:Array,
+                default:()=>[]
+             }
+           },
+           data() {
+                return {
+                    slides:[]
+                }
+            },
+            watch:{
+              data(newValue,oldValue){
+                if(newValue.length>0){
+                    for(var i =0;i<newValue.length;i++){
+                        if(i==0)
+                            newValue[i].isShow=true
+                            else
+                            newValue[i].isShow=false
+                            
+                        
+                    }
+                    Object.assign(this.slides,newValue)
+                }
+              }
+            },
+           
+            template:`
+        <div class='swiper-main' v-if='this.data.length>0'>
+          <div class='swiper-wrap'>
+            <transition-group>
+                <div class='slide' v-show='item.isShow' v-for='(item,index) in slides' :key='item.id'>
+                    <img:src="item.img">
+                    </div>
+                </transition-group>
+            </div>
+            <div class='page'>
+                <div @click='changeItem(index)' v-for='(item,index) in slides ' :class='{item:true,active:item.isShow}'></div>
+                </div>
+            </div>
+            `,
+            
+            methods: {
+                changeItem(index){
+                    for(var i = 0;i<this.slides.length;i++){
+                        if(this.slides[i].isShow){
+                            this.slides[i].isShow=false
+                            break;
+                        }
+                    }
+                    this.slides[index].isShow=true
+                    this.$set(this.slides,index,this.slides[index])
+                }
+            },
+        }
+
+    const vm = new Vue({
+            el:'#app',
+
+            data() {
+                return {
+                    slides:[]
+                }
+            },
+            created(){
+                setTimeout(()=>{
+                this.slides=[
+                    {id:1,img:"./vue课堂练习/banner2.jpg"},
+                    {id:2,img:"./vue课堂练习/banner3.jpg"}
+                ]
+                },200)
+            },
+            components:{
+                SwiperComponent
+            },
+            template:`
+            <div>
+             <swiper-component :data='slides'></swiper-component >
+            </div>
+            `
+        })
+    </script>
+</body>
+</html>

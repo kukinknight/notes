@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 要求: 生成随机颜色 (预定义颜色red,blue, green, 十六进制,  rgb(0,255,255));
+
+
+        // 实现如何随机产生十六进制颜色 和 rgb颜色
+
+        // 步骤:
+        // a) 实现一个随机数 ===> 不确定随机数到底是多少,可以将随机封装到一个函数中,用的使用调用即可
+        function myRandom(min, max) {
+            let num  = Math.floor(Math.random() * (max - min + 1)) + min;
+            // 需要返回值,将产生的随机数返回
+            return num;
+        }
+
+        function RandomColor(type){
+            let color = '#'
+
+            if(type===true){
+             let arr =[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+             for(let i =1;i<=6;i++){
+                let index = myRandom(0,arr.length-1)
+                color = color+arr[index]
+             }
+            }else{
+           let r = myRandom(0,255)
+           let g = myRandom(0,255)
+           let b =  myRandom(0,255)
+           color = `rgb(${r},${g},${b})`
+            }
+            return color
+        }
+       let res= RandomColor(true)
+       console.log(res)
+       let res1 = RandomColor(false)
+       console.log(res1)
+    </script>
+</body>
+</html>

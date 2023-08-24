@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>列表</li>
+        </ul>
+        <p>段落</p>
+        <h1>标题</h1>
+        <span>span标签</span>
+        <p>段落2</p>
+        <input type="text">
+        <p>段落3</p>
+        <a href="#">连接</a>
+    </div>
+    <script>
+        // 查找节点
+        // 根据标签之间的关系查找节点(标签)
+        // a) 根据父节点找子节点
+        // b) 根据子节点找父节点
+        // c) 根据节点获取兄弟节点
+
+
+
+
+        // 1) ================= 根据父节点找子节点  ====================
+        // 语法1: 父DOM标签对象.children
+        // 总结:
+        // a) 父DOM标签对象.children 得到的结果是一个伪数组
+        // b) 伪数组中保存的都是DOM标签对象
+        // c) 父DOM标签对象.children 获取当前父元素中的所有直接子元素
+
+        // 代码演示:
+        // let div = document.querySelector('div');
+        // let res = div.children;
+        // console.log(res);
+
+
+        // 语法2: 父DOM标签对象.childNodes  (了解)
+        // let div = document.querySelector('div');
+        // let res = div.childNodes;
+        // console.log(res)
+
+
+        //2) ========================= 根据子元素获取父元素 =======================
+        // 语法: 子DOM标签对象.parentNode;
+        // 总结:
+        // a) 子DOM标签对象.parentNode; 得到的结果就是当前标签的直接父元素是一个DOM对象
+        // let span = document.querySelector('span');
+        // console.log(span.parentNode.parentNode);
+        </script>
+</body>
+</html>

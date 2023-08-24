@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="rings">
+        <span style="--d:1"></span>
+        <span style="--d:2"></span>
+        <span style="--d:3"></span>
+        <span style="--d:4"></span>
+        <span style="--d:5"></span>
+    </div>
+    <div class="step">
+        <p>正在进行更新 <span id="pct">0%</span></p>
+        <p>请保持计算机打开状态。</p>
+    </div>
+    <div class="warning">
+        计算机可能会重启几次
+    </div>
+</body>
+<script>
+    var pct = document.getElementById("pct")
+    var count = 2 //摸鱼时间，单位分钟
+    var per = 0
+    setInterval(() => {
+        per++
+        if (Math.random() > 0.6 && per < 100) {
+            pct.innerText = per + "%"
+        }
+        else if (per > 100) {
+            pct.innerText = "100%"
+        }
+    }, count * 600);
+</script>
+
+</html>

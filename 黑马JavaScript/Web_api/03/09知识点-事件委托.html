@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>第一个li</li>
+        <li>第二个li</li>
+        <li>第三个li</li>
+        <li>第四个li</li>
+    </ul>
+
+    <script>
+        // 事件委托: 在注册事件的时候,可以减少代码量
+        // 事件委托实现步骤:
+        // 1. 必须将事件给父元素注册
+        // 2. 找到真正的事件源,可以进行各种处理:  事件对象参数.target
+        
+        // 要求: 点击每一个li标签,在控制台输出li标签中的内容
+        // 代码演示: 不用事件委托实现
+
+        // let li = document.querySelectorAll('li')
+        // for(let i =0;i<li.length;i++){
+        //     li[i].addEventListener('click',function(){
+        //         console.log(this.innerHTML)
+        //     })
+        // }
+
+        let lis =document.querySelector('ul')
+        lis.addEventListener('click',function(e){
+           let  li = e.target
+           console.log(li.innerHTML)
+        })
+    </script>
+</body>
+</html>

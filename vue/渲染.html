@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="item in student">{{item.id}} {{item.name}} {{item.age}}</li>
+        </ul>
+
+      <div v-for="(item,index) in list" >{{item}}
+      <strong v-if="current==item" :key="index">{{item}}</strong>
+      <span v-else @click="current=item">{{item}}</span>
+    </div>
+
+    <script>
+     var vm =new Vue({
+        el:'#root',
+        data:{
+            student:[
+                {id:1, name:'小刘',age:18},
+                { id:2,name:'小李',age:26},
+                
+            ],
+            list:[' 全部','科幻','武侠','历史','惊悚'],
+            current:'全部'
+        },
+      
+     })
+    </script>
+</body>
+</html>

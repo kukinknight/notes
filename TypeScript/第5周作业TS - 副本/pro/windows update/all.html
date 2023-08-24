@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    color:white;
+}
+body{
+    background:black;
+    display:flex;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    justify-content: center;
+    align-items: center;
+    cursor:none;
+}
+div{
+    position:absolute;
+    font-size:25px;
+}
+.rings{
+    width:50px;
+    height:50px;
+    /* border:1px solid white; */
+    position: absolute;
+    transform:rotate(45deg);
+}
+.rings span{
+    width:100%;
+    height:100%;
+    position:absolute;
+    animation:round 4s ease infinite calc(var(--d) * 0.2s)
+}
+.rings span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius: 50%;
+}
+@keyframes round{
+    100%{
+        transform:rotate(360deg)
+    }
+}
+.step {
+    transform:translateY(100px);
+    text-align:center;
+}
+.warning{
+    bottom:25px;
+}
+    </style>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="rings">
+        <span style="--d:1"></span>
+        <span style="--d:2"></span>
+        <span style="--d:3"></span>
+        <span style="--d:4"></span>
+        <span style="--d:5"></span>
+    </div>
+    <div class="step">
+        <p>正在进行更新 <span id="pct">0%</span></p>
+        <p>请保持计算机打开状态。</p>
+    </div>
+    <div class="warning">
+        计算机可能会重启几次
+    </div>
+</body>
+<script>
+    var pct = document.getElementById("pct")
+    var count = 2 //摸鱼时间，单位分钟
+    var per = 0
+    setInterval(() => {
+        per++
+        if (Math.random() > 0.6 && per < 100) {
+            pct.innerText = per + "%"
+        }
+        else if (per > 100) {
+            pct.innerText = "100%"
+        }
+    }, count * 600);
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <script>
+        let m = 100;
+        while(true){
+            let res = +prompt(`请输入你的操作:
+            1.取钱
+            2.存钱
+            3.查询余额
+            4.退出
+            `)
+            if(res===4){
+                break
+            }
+            switch(res){
+                case 1:
+                    let money = +prompt('请输入取款金额')
+                    m = m-money
+                    if(m<money){
+                        alert('金额不足请充值')
+                    }
+               break;
+
+               case 2:
+                let money1 = +prompt('请输入存款金额')
+                m+=money1
+               break;
+
+               case 3: 
+               alert(m)
+               break;
+            }
+        }
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person={
+            //属性和方法
+            name:'张三',
+            age:20,
+            show:function(){
+                console.log(this.name+this.age)
+            }
+        }
+       person.show()
+        
+        //方法二
+        var person1={}
+        person1.name='张三',
+        person1.age =20,
+        person1.show1=function(){
+            console.log(person1.name+''+person1.age)
+        }
+        person1.show1()
+
+        //方法三
+        var person2 = new Object()
+        obj.name = '张三'
+        obj.age = 20
+        obj.SayHi = function(){
+
+        }
+
+        //函数
+        function dog(){
+            this.name='haha',
+            this.strain='拉布拉多',
+            this.run=function(){
+                console.log(this.name)
+            }
+        }
+
+        //对向的遍历
+        var obj1={name:'张三',age:10 };
+        for(var s in obj1){
+            console.log(obj1[s])
+        }
+    </script>
+</body>
+</html>

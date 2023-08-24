@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>第五周作业TS</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		display: grid;
+		place-items: center;
+		background-color: #F5F5F5;
+	}
+
+	.box {
+		width: 100vw;
+		height: 100vh;
+		display: grid;
+		grid-template-columns: repeat(14, 1fr);
+	}
+
+	.item {
+		height: 120px;
+		display: grid;
+		place-items: center;
+		text-align: center;
+		font-size: 1.25rem;
+		cursor: pointer;
+		/* border: 1px solid black; */
+	}
+
+	img {
+		width: 60%;
+	}
+</style>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+
+<body>
+	<div class="box"></div>
+</body>
+<script>
+	$(function () {
+		let stu = ["2circles", "3D cube", "3D form", "3Dparticles", "2042 loading", "ani logo", "arcs ani", "around mouse particles", "around particles", "aroungd dots",
+			"block breaker", "bubblesort", "bw images", "canvas fireworks", "canvas mask", "canvas matrix", "canvas pattern", "canvas rain", "canvas sprite", "clip path", "collection game",
+			"color light", "corner border login", "count down", "cpu monitor", "cross border", "CSS 3D box", "cube sweep", "dashboard", "delay round mouse", "dots countdown", "particles gravity", "particles ring clock",
+			"pass check", "password check", "perlin noise 1", "perlin particles", "Pi Day", "pic2particles", "piece hover", "pointer background", "polygon particles", "polygon wallpaper", "portal loading", "power input", "puzzle mask", "radar animation"
+			, "radar chart", "radar chart plus", "ring clock", "ring load", "ring menu", "ring text pointer", "ripples ani", "rolling hexs", "rolling light", "rotate to mouse", "sector countdown", "sector data", "shadow loading", "share icons", "shoot game", "shooting game", "simple art", "sin&cos", "single js mouse ani", "slide with vue",
+			"solid border", "spacewalker", "spotlight button", "sprite animation", "star light", "star maker", "submit ani", "switch theme", "text hidden", "text particles", "three.js 01", "three.js 02", "three.js 03", "three.js 05", "thumbnail slide", "title ani", "tomato clock", "tri ani", "triangles", "unlock ani", "vote stars", "watching", "wave bottom"
+			, "wave cricle", "wave rings", "wheel event", "wheel limit", "windows update", "xbox light", "xml visualization"]
+
+		/**
+		 * 'page.html' 弹出窗口的文件名； 
+	'newwindow' 弹出窗口的名字（不是文件名），非必须，可用空''代替； 
+	height=100 窗口高度； 
+	width=400 窗口宽度； 
+	top=0 窗口距离屏幕上方的象素值； 
+	left=0 窗口距离屏幕左侧的象素值； 
+	toolbar=no 是否显示工具栏，yes为显示； 
+	menubar，scrollbars 表示菜单栏和滚动栏。 
+	resizable=no 是否允许改变窗口大小，yes为允许； 
+	location=no 是否显示地址栏，yes为允许； 
+	status=no 是否显示状态栏内的信息（通常是文件已经打开），yes为允许；
+		 * 
+		*/
+		let config = "height=900, width=1200,top=100,left=200,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=yes"
+		
+		// 创建 dom 字符串
+		//回调stu里面的每一个值
+		stu.forEach((item, index) => {
+			let a = `<a herf='./pro/${item}/index.html' target='_blank' class='item'>
+			<img src='https://img-qn.51miz.com/Element/00/96/62/85/0735c3a0_E966285_4bf13759.png'/>
+				${item}</a>`
+				//插入一个元素
+			$('.box').append(a)
+			// 遍历dom元素
+			//创建一个临时数组
+			stuforEach(Array.of($(`.item:eq(${index})`)), item)
+		})
+		
+		function stuforEach(arr, item) {
+			//对数组进行
+			arr.forEach((item2, index2) => {
+				item2.click(function () {
+					let url = `./pro/${item}/index.html`
+					//用窗口打开
+					let me = window.open(`./pro/${item}/index.html`, 'newW', config)
+					
+					console.log(me)
+					// openPage()
+					return false
+				})
+			})
+		}
+
+		// 判断一个网页是否已经打开成功
+		/* function openPage() {
+			if ($('pre').text() == 'Not Found') {
+				console.log("页面加载失败或者尚未完成")
+			} else {
+				console.log("页面已经成功加载")
+			}
+		} */
+	})
+</script>
+
+</html>

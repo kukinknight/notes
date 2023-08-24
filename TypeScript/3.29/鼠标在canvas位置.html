@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="600"></canvas>
+    <script>
+        let canvas = document.querySelector('canvas')
+        let c2d = canvas.getContext('2d')
+
+        //c2d ,画弧(x,y,半径，起始角度，结束角度2Π)
+
+        let A = {
+            x:100,
+            y:100
+        }
+        c2d.beginPath()
+        c2d.arc(A.x,A.y,10,0,Math.PI*2)
+        c2d.stroke()
+        c2d.closePath()
+
+        //在这个0右上角显示坐标
+        c2d.beginPath()
+        let str = `(${this.x},${this.y})`
+        // c2d.fillText('坐标',A.x+10,A.y-10)
+        c2d.fillText(str,A.x+10,A.y-10)
+        c2d.closePath()
+
+        //绘制垂直参考线
+        c2d.moveTo(A.x,0)
+        c2d.lineTo(A.x,canvas.width)
+        c2d.stroke()
+
+        //绘制水平参考线
+        c2d.moveTo(0,A.y)
+        c2d.lineTo(canvas.height)
+        c2d.stroke()
+
+    </script>
+</body>
+</html>

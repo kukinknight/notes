@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+     <div id="app" class="container center">
+        <ul class="menu">
+            <menu-item v-bind:tree-data="treeData"></menu>
+            <li class="folder">
+            <label v-bind:class="{'open':open}" @click="toggle">{{treeData.name}}</label>
+            <transition name="slide">
+            <ul v-show="open" v-if="isFolder">
+                <li v-for="(it,index) in treeData.children" :key="index" class="item">
+                <label>{{it.name}}</label>
+            </li>
+            </ul>
+        </transition>
+            </li>
+        </ul>
+     </div>
+     <script>
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+                open:false,
+                treeData:{
+                    name:'web开发',
+                    children:[
+                        {name:'前端技术开发',
+                        children:[{name:'HTML'},{name:'CSS'} ,{name:'JavaScript'}
+                ]},
+                        {name:'后端技术开发',children:[{name:'Node.js'},{name:'Python'},{name:'Java'}]
+                        
+                    },
+                        {name:'工程化技术',
+
+                    }
+                    ]
+                }
+            },
+           computed:{
+            isFolder(){
+                return this.treeData.children && this.treeData.children.length>0;
+
+            }
+           },
+           methods: {
+            toggle(){
+            if(this.isFolder) this.open = !this.open 
+            }
+           },
+        })
+     </script>
+     <style>
+        *,*::after,*::before{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        .container{
+            min-height: 100vh;
+        }
+        .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        .menu{
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background: #bbb;
+        }
+        .menu label{
+            position: relative;
+            display: block;
+            padding: 18px 18px 18px 18px;
+            color: #000;
+            cursor: pointer;
+        }
+        .menu label::before{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 18px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            line-height: 1;
+            height: 22px;
+        }
+        .menu li .item>label::before{
+            content: '_';
+        }
+        .menu li .folder>label::before{
+            content: '>';
+        }
+        .menu label .open::before{
+            transform: translateY(-45%);
+        }
+        .menu ul{
+            background: #ddd;
+            padding-left: 20px;
+        }
+        .slide-enter-active{
+            transition-duration: 1s;
+        }
+        .slide-leave-active{
+            transition-duration: 0.5s;
+        }
+        .slide-enter-to,.slide-leave{
+            max-height: 500px;
+            overflow: hidden;
+        }
+        .slide-enter,.slide-leave-to{
+            max-height: 0;
+            overflow: hidden;
+        }
+        .menu label::before{
+            transition: transform 0.3s;
+        }
+     </style>
+</body>
+</html>

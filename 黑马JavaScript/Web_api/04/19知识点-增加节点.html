@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮">
+  
+    <script>
+        // 增加节点: 在网页中创建一个新的标签
+
+        // 增加节点操作方式:
+        // 1. 创建一个新的节点: document.createElement('标签名')
+        // 2. 将创建的标签添加到一个指定的父容器中:  父容器DOM标签对象.appendChild(创建的新节点);
+        
+        // 总结:
+        // 创建的标签得到的结果就是一个DOM标签对象
+
+        // 代码演示:
+        // 要求: 点击按钮在body标签中新增(添加,创建)一个标题标签
+        let btn = document.querySelector('input');
+        let body = document.body;
+        btn.addEventListener('click', function() {
+            // 创建新标签
+            let res =  document.createElement('h1');
+                res.innerHTML = '我是创建的标题标签';
+
+            // 将创建的标签添加到父容器中
+            body.appendChild(res);
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         canvas{
+            background-color: pink;
+			
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1500" height="800" id="A"></canvas>
+    <script>
+
+class Ship{	//飞船类，模板
+	constructor(x,y,c){	//构造方法，创建对象时自动
+		this.x = x
+		this.y = y
+		this.w = 10	
+		this.h = 10
+		this.vx = Math.random()*10 -5   //水平速度00
+		this.vy = Math.random()*10 -5  //垂直速度
+		
+		this.c = c	//颜色
+	}
+	
+	draw(canvas){	//画图方法
+		this.move()
+		canvas.strokeStyle = this.c
+		canvas.strokeRect(this.x, this.y,10,10)
+	}
+	
+	move(){	//移动
+		if(this.y<-10 || this.y>810 ){
+			this.vy = -this.vy
+		}
+	
+
+		if( this.x< -10 || this.x>1510 ){
+			this.vx = -this.vx
+		}
+
+		this.x+=this.vx 
+		this.y+=this.vy
+	}
+}
+        let canvas = document.querySelector('#A').getContext('2d')
+
+let shipArr = []
+
+let crr = ['red','orange','yellow','green','cyan','blue','purple','black']
+
+
+for(let i=0;i< 27;i++){
+	let x = 750+200*Math.random() -100 
+	let y = 400+200*Math.random() -100 
+	let n = parseInt(  Math.random() * crr.length  )
+	let c = crr[n]	
+	let one =  new Ship(x,y,c) 
+	shipArr.push( one)
+}
+
+
+animate();//循环动画函数 
+function animate(t){
+	canvas.clearRect(0,0,1500,800)	//清空画布
+
+	for(let one of shipArr){
+		one.draw(canvas)
+	}
+	requestAnimationFrame(animate);//每隔16.67ms去调用，即每秒绘制60次
+}
+
+
+    </script>
+</body>
+</html>

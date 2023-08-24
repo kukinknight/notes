@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 日期对象
+        // 应用场景: 在网页中显示/操作 
+
+        // 日期对象基本使用
+        // 1.先获取日期对象 let 自定义对象名 = new Date
+        let dt = new Date()
+        // 2.根据当前日期对象获取 年 月 日 时 分 秒
+        let year = dt.getFullYear
+
+        let M = dt.getMonth +1
+
+        let r = dt.getDate
+
+        let h =dt.getHours
+
+        let m = dt.getMinutes
+
+        let s = dt.getSeconds
+        document.write(year +'年' +M +'月' +r +'日' +h +'时' +m+'分'+s+'秒')
+    </script>
+</body>
+</html>

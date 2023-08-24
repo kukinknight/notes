@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <style>canvas{background-color: pink;}</style>
+</head>
+<canvas width="1000" height="1000"></canvas>
+
+<script>
+let canvas = document.querySelector('canvas')
+let c2d = canvas.getContext('2d')
+
+const p1 = { x: 100, y: 100 };
+const p2 = { x: 150, y: 100 };
+const radius = 50;
+
+let angle = 0;
+
+function draw() {
+  // Clear the canvas
+  c2d.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Calculate the x and y coordinates of p2
+  const x = p1.x + radius * Math.cos(angle);
+  const y = p1.y + radius * Math.sin(angle);
+
+  // Draw p2 at the calculated coordinates
+  c2d.beginPath();
+  c2d.arc(x, y, 10, 0, 2 * Math.PI);
+  c2d.fill();
+
+  // Update the angle for the next frame
+  angle += 0.05;
+
+  // Request the next frame
+  requestAnimationFrame(draw);
+}
+
+// Start the animation
+requestAnimationFrame(draw);
+
+</script>

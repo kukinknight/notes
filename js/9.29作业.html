@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //封装对象
+        //         var myMath = {  
+        //         PI: 3.141592653589793,
+        //       max: function() {
+        //        var max = arguments[0];
+        //        for (var i = 1; i < arguments.length; i++) {
+        //       if (arguments[i] > max) {  max = arguments[i];  }
+        //     }
+        //     return max;
+        //   }
+        // };
+        
+        
+        // 
+        // Math.random() * (max - min) + min;
+        // Math.floor(Math.random() * (max + 1))
+        // Math.floor(Math.random() * (max + 1) + 1);
+        
+        
+        
+        //             function getRandom(min,max){
+        //                 return Math.floor(Math.random()*(max-min+1)+min);
+        //             }
+        //             var random=getRandom(1,10);
+        //             while(true){
+        //                 var num=prompt('猜数字,范围在1~10之间。');
+        //                 if(num>random){
+        //                     alert('你猜大了');
+        //                 }
+        //                 else if(num<random){alert('你猜小了')}
+        //                 else{alert('恭喜你，猜对了');break}
+        //             }
+        
+        
+        
+        
+        
+        // //日期对象的使用
+        // // 方式1：没有参数
+        // var date1 = new Date();  
+        // // 输出：Wed Oct 16 2019 10:57:56 GMT+0800 (中国标准时间)
+        // // 方式2：传入年、月、日、时、分、秒（月的范围是0~11）
+        // var date2 = new Date(2019, 10, 16, 10, 57, 56);
+        // // 输出：Sat Nov 16 2019 10:57:56 GMT+0800 (中国标准时间
+        // // 方式3：用字符串表示日期和时间
+        // var date3 = new Date('2019-10-16 10:57:56');
+        // // 输出：Wed Oct 16 2019 10:57:56 GMT+0800 (中国标准时间)
+        
+        
+        
+        
+        
+        // // 方式1：通过日期对象的valueof()或getTime()方法
+        // var date1 = new Date();
+        // console.log(date1.valueOf()); // 示例结果：1571196996188
+        // console.log(date1.getTime()); // 示例结果：1571196996188
+        // // 方式2：使用“+”运算符转换为数值型
+        // var date2 = +new Date();
+        // console.log(date2);	// 示例结果：1571196996190
+        // // 方式3：使用HTML5新增的Date.now()方法
+        // console.log(Date.now());	// 示例结果：1571196996190
+        
+        
+        // //倒计时
+        // function countDown(time){
+        //             var nowTime=+new Date();
+        //             var inputTime=+new Date(time);
+        //             var Times=(inputTime-nowTime)/1000;
+        //             var d=parseInt(Times/60/60/24);d=d<10?'0'+d:d;
+        //             var h=parseInt(Times/60/60%24);h=h<10?'0'+h:h;
+        //             var m=parseInt(Times/60%60);m=m<10?'0'+m:m;
+        //             var s=parseInt(Times%60);s=s<10?'0'+s:s;
+        //             return d+'天'+h+'时'+m+'分' +s+'秒'       
+        //         }
+        //             console.log(countDown('2022-9-30 14:48:32'));
+        
+        
+        
+        
+        
+        
+        // var arr = [];
+        // var obj = {};
+        // // 第1种方式
+        // console.log(arr instanceof Array);	// 输出结果：true
+        // console.log(obj instanceof Array);	// 输出结果：false
+        // // 第2种方式
+        // console.log(Array.isArray(arr));	// 输出结果：true
+        // console.log(Array.isArray(obj));	// 输出结果：false
+        
+        
+        
+        
+        // //剔除大于2000
+        // var a=new Array(1800,1400,2300,5200);
+        // var s=[];
+        // for(var i=0;i<a.length;i++){
+        //     if(a[i]<2000){
+        //         s.push(a[i]);
+        //     }
+        
+        // }
+        // console.log(s);
+        
+        
+        
+        
+        // //去除重复
+        // function unique(arr){
+        //     var newArr=[];
+        //     for(var i=0;i<arr.length;i++){
+        //         if(newArr.indexOf(arr[i])===-1){
+        //             newArr.push(arr[i]);}
+        //         }
+        //         return newArr;
+        //     }
+        //     var demo =unique(['blue','green','blue']);
+        //     console.log(demo);
+        
+        
+        
+        
+        
+        // // 使用toString()
+        // var arr = ['a', 'b', 'c'];
+        // console.log(arr.toString());	
+        // // 使用join()
+        // console.log(arr.join());		
+        // console.log(arr.join(''));		
+        // console.log(arr.join('-'));		
+        
+        
+        // var str = new String('apple');	// 创建字符串对象
+        // console.log(str);			// 输出结果：String {"apple"}
+        // console.log(str.length);		// 获取字符串长度，输出结果：5
+        
+        
+        // var str = 'HelloWorld';
+        // str.indexOf('o');	    // 获取“o”在字符串中首次出现的位置，返回结果：4
+        // str.lastIndexOf('o');  // 获取“o”在字符串中最后出现的位置，返回结果：6
+        
+        
+        // //字母指定位置
+        // var str = 'Hello World, Hello JavaScript';
+        // var index = str.indexOf('o');
+        // var num = 0;
+        // while (index != -1) {
+        //   console.log(index);		  // 依次输出：4、7、17
+        //   index = str.indexOf('o', index + 1);
+        //   num++;
+        // }
+        // console.log('o出现的次数是：' + num);  // o出现的次数是：3
+        
+        
+        // //返回字节
+        // var str = 'HelloWorld';
+        // var str = 'Apple';
+        // console.log(str.charAt(3));	          // 输出结果：1
+        // console.log(str.charCodeAt(0));   // 输出结果：65（字符A的ASCII码为65）
+        // console.log(str[0]);	          // 输出结果：A
+        
+        
+        // //最多的字符和次数
+        // var str = 'Apple';
+        // // 第1步，统计每个字符的出现次数
+        // var o = {};
+        // for (var i = 0; i < str.length; i++) {
+        //   var chars = str.charAt(i);	// 利用chars保存字符串中的每一个字符
+        //   if (o[chars]) {	               // 利用对象的属性来方便查找元素
+        //     o[chars]++;
+        //   } else {  o[chars] = 1; }
+        // }
+        // console.log(o);		// 输出结果：{A: 1, p: 2, l: 1, e: 1}
+        // // 第2步， 统计出现最多的字符
+        // var max = 0;		// 保存出现次数最大值
+        // var ch = '';		// 保存出现次数最多的字符
+        // for (var k in o) {
+        //   if (o[k] > max) {
+        //     max = o[k];
+        //     ch = k;
+        //   }
+        // }
+        // // 输出结果：“出现最多的字符是：p，共出现了2次”
+        // console.log('出现最多的字符是：' + ch + '，共出现了' + max + '次');
+        
+        
+        // var name = prompt('请输入用户名');
+        // if (name.length < 3 || name.length > 10) {
+        //   alert('用户名长度必须在3~10之间。');
+        // } else if (name.toLowerCase().indexOf('admin') !== -1) {
+        //   alert('用户名中不能包含敏感词：admin。');
+        // } else {
+        //   alert('恭喜您，该用户名可以使用');
+        // }
+        
+        
+        
+        // //obj1和obj2指向了同一个对象
+        // // 创建一个对象，并通过变量obj1保存对象的引用
+        // var obj1 = { name: '小明', age: 18 };
+        // // 此时并没有复制对象，而是obj2和obj1两个变量引用了同一个对象
+        // var obj2 = obj1;
+        // // 比较两个变量是否引用同一个对象
+        // console.log(obj2 === obj1);  
+        // // 通过obj2修改对象的属性
+        // obj2.name = '小红';
+        // // 通过obj1访问对象的name属性
+        // console.log(obj1.name);	
+        
+        
+        
+        // var obj1 = { name: '小明', age: 18 };
+        // var obj2 = obj1;
+        // // obj1指向了一个新创建的对象
+        // obj1 = { name: '小红', age: 17 };
+        // // obj2仍然指向原来的对象
+        // console.log(obj2.name);	//小明
+        
+        
+        // function change(obj) {
+        //   obj.name = '小红';
+        // }
+        // var stu = { name: '小明', age: 18 };
+        // change(stu);
+        // console.log(stu.name);  //小红
+            </script>
+</body>
+</html>

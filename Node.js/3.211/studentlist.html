@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2><a href="/insert">添加学生信息</a></h2>
+    <table border="1px black solid" >
+        <tr>
+            <td colspan="5" >学生信息表</td>
+        </tr>
+        <tr>
+            <td>学生编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <%data.forEach(function(item,index){ %>
+        <tr>
+            <td id="<%=item.stuid%>"><%=item.stuid%></td>
+            <td><%=item.name%></td>
+            <td><%=item.age%></td>
+            <!-- <a href="/del/<%=item.stuid%>">删除</a> -->
+            <!-- <span id="btnDel" onclick="del(<%=item.stuid%>)" -->
+            <td><a href="javascript:void(0)" id="btnDel">删除</a><a href="/edit/<%=item.stuid%>">修改</a></td>
+        </tr>
+        <% })%>
+    </table>
+    <P>
+        <a href="">首页</a>
+        <a href="">上一页</a>
+        <a href="">下一页</a>
+        <a href="">末页</a>
+    </P>
+    <script src="https://cdn.staticfile.org/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        //使用异步请求方法 删除数据库
+        $(function(){
+            //删除方法
+           $(document).on('click','#btnDel',function(){
+                var td = $(this).parent().parent().find("td");
+                var toid = parseInt(td[0].innerHTML);
+
+                var flag = confirm("确认要删除吗?")
+                if(flag){
+                    $.ajax({
+                        type:'GET',//请求的类型
+                        url:'//127.0.0.1:8080/del',//请求地址
+                        data:{
+                            id:toid,
+                            age:10
+                        }, //发送给这个路由
+                        success:function(data){
+                            //console.log(data.status)
+                            if(data.status == 200){
+                                location.href='http://127.0.0.1:8080/user/list'
+                            }
+                        }
+                    })
+                }else{
+                    alert('取消')
+                }
+           })
+        })
+    </script>
+</body>
+</html>

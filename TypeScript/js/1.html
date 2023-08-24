@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="200"></canvas>
+    <script src="tool.js"> </script>
+    <script src="ship.js"></script>
+
+    <script>
+         //c2d = 文档对象.获取（）.获取绘图环境(2d模式)
+   let c2d= document.querySelector('canvas').getContext('2d')
+
+let  tool = new Tool()
+ tool.fullScreen(c2d)
+ tool.drawGrid(c2d)
+
+ let arr = []
+ let brr = []
+
+ arr.push(new ship(100,c2d.canvas.height/2,30,30,Math.random()*6-3,Math.random()*6-3,'red')    )
+   
+    for(let i =0;i<140;i++){
+         let x = c2d.canvas.width/2;
+         let y =c2d.canvas.height/2;
+         let w =10;
+         let h = 10;
+         let vx = Math.random()*10-5;
+         let vy = Math.random()*10-5;
+         let color = 'blue';
+         let one = new ship(x,y,w,h,vx,vy,color)
+
+         brr.push(one)
+    }
+
+   run();
+   function run(){   //动画主循环函数
+
+    c2d.clearRect(0,0,c2d.canvas.width,c2d.canvas.height)
+    tool.drawGrid(c2d)
+    //判断碰撞
+    for(let A of arr){
+        for(let B of brr){
+
+            if(tool.pz(A,B)){
+                B.vx = -B.vx*5
+                B.vy = -B.vy*5
+                A.w++;
+                B.h++
+            }
+        }
+    }
+
+    //画图
+   for(let A of arr){
+    A.draw(c2d)
+   }
+
+   for(let B of brr){
+    B.draw(c2d)
+   }
+
+  requestAnimationFrame(run)  //每秒执行60次
+
+ }
+    </script>
+</body>
+</html>

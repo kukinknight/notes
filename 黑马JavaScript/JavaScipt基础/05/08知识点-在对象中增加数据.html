@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script>
+    // 1. 如何向对象中新增数据: 新增属性 + 新增方法
+    // let zs = {};
+    
+    // a) 在对象中新增属性: 对象名['自定义属性名'] = 值  或者  对象名.自定义属性名 = 值;
+    // zs['uname'] = '张三';
+    // zs.age = 23;
+    // console.log(zs);
+
+
+    // b) 在对象中新增方法: 对象名['自定义方法名'] = function() {}  或者  对象名.方法名 = function(){}
+    // zs['eat'] = function() {
+    //     console.log('正在吃饭');
+    // }
+    // zs.tiaowu = function() {
+    //     console.log('正在跳舞');
+    // }
+    // console.log(zs);
+
+
+    // 总结:
+    // 1. 对象中新增属性和修改属性的语法一样的!!!!
+    // 2. 如何区别当前是新增还是修改呢? 
+    // a) 如果对象中有对应的属性或方法,则表示修改
+    // b) 如果对象中没有对应的属或方法,则表示添加
+
+    let zs = {
+        uname: '张三',
+        eat: function() {
+            console.log('正在吃饭');
+        }
+    }
+
+    // 修改还是增加?  修改
+    zs.uname = '李四';
+    // 增加
+    zs.age = 23;
+
+    // 修改
+    zs.eat = function() {
+        console.log('喝水');
+    }
+    console.log(zs);
+</script>
+</body>
+</html>

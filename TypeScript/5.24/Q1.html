@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fibonacciSum(n) {
+      let sum = 0
+      let a = 1
+      let b = 1
+
+      for (let i = 0; i < n; i++) {
+        let temp = a
+        a = b
+        b = temp + b
+        sum += b / a
+      }
+      return sum
+    }
+    console.log(fibonacciSum(20))
+  </script>
+</body>
+
+</html>

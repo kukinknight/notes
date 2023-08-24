@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p style="display: none;">我是段落标签</p>
+        <ul>
+            <li>我是li标签</li>
+        </ul>
+    </div>
+    
+    <script>
+        // 0. 移除节点(删除节点)
+        // 语法:  父容器.removeChild(要被移除的标签对象);
+        // 代码演示:
+        // let div = document.querySelector('div');
+        // let p = document.querySelector('p');
+        //     div.removeChild(p);
+
+        // 移除节点和隐藏元素区别
+        // 1. 移除节点: 代表当前标签在html结构中存在
+        // 2. 隐藏元素: 代表当前标签不会在浏览器中渲染显示,但是html结构中依然可以找到该标签
+
+
+
+
+        // 1.克隆节点: 复制
+        // 语法: 要被克隆的标签对象.cloneNode(布尔值);
+        // 代码演示:
+        // let div = document.querySelector('div');
+        // let res = div.cloneNode();
+        // console.log(res);
+
+        // 总结:
+        // 1. 克隆元素的时候,如果设置的值是false,则表示只克隆当前标签本身
+        // 2. 克隆元素的时候,如果设置的值是true, 则表示克隆当前标签和标签中的所有内容
+        // 3. 克隆元素的时候,如果没有设置参数,则默认值是false
+
+
+
+
+
+    </script>
+</body>
+</html>

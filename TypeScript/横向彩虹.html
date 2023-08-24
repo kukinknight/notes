@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="1000"></canvas>
+    <script>
+        let c2d = document.querySelector('canvas').getContext('2d')
+        let w = 50
+        let h = 50
+        c2d.fillRect(0,0,w,h)
+        c2d.strokeRect(25,25,w,h)
+        c2d.strokeRect(75,75,w,h)
+        c2d.strokeRect(100,100,w,h)
+        c2d.fillRect(200,0,w,h)
+
+        let x = y= 0
+        let arr=['red','orange','yellow','green','cyan','blue','purple']
+        function run(){
+            x=x+3;
+            y = y +Math.random()*8-3
+            for(let i = 0;i<7;i++){
+                c2d.fillStyle=arr[i%7]
+                c2d.fillRect(x,y+50*i,w,h)
+            }
+            
+            requestAnimationFrame(run)
+        }
+        run();
+    </script>
+</body>
+</html>

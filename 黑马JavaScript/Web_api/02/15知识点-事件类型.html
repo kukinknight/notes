@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="text">
+    <script>
+        // 1. 事件类型: 代表用户不同的动作
+        // a) 鼠标事件: 单击事件 click    鼠标进入事件: mouseenter   鼠标离开事件:mouseleave
+
+        // 代码演示:
+        // let div = document.querySelector('div');
+        // div.addEventListener('mouseenter', function() {
+        //     div.style.background= 'pink';
+        // });
+
+        // div.addEventListener('mouseleave', function() {
+        //     div.style.background = 'red';
+        // })
+
+
+        // b) 焦点事件: 当输入框获取到光标的时候 focus     失去焦点事件: blur 
+        // 注意: 都是给输入框注册的
+        // let int = document.querySelector('input');
+        // int.addEventListener('focus', function() {
+        //     int.style.background = 'pink';
+        // });
+
+        // int.addEventListener('blur', function() {
+        //     int.style.background = '#fff';
+        // })
+
+        
+        // c) 键盘事件:  按键按下keydown     按键抬起keyup
+        // 注意: 要么给整个页面注册,要么给输入框注册
+        // let int = document.querySelector('input');
+        // int.addEventListener('keydown', function() {
+        //     console.log('按键按下');
+        // })
+
+        // int.addEventListener('keyup', function() {
+        //     console.log('按键抬起');
+        // })
+
+
+        // d) 文本事件: 用户输入事件 
+        // 注意: 当前事件给输入框注册
+        let int = document.querySelector('input');
+        int.addEventListener('input', function() {
+            console.log('用户输入内容了'); 
+        })
+        </script>
+</body>
+</html>

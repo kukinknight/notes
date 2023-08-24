@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="1000"></canvas>
+    <script>
+        let c2d = document.querySelector('canvas').getContext('2d')
+        let w = 50
+        let h = 50
+        c2d.fillRect(0,0,w,h)
+        c2d.strokeRect(25,25,w,h)
+        c2d.strokeRect(75,75,w,h)
+        c2d.strokeRect(100,100,w,h)
+        c2d.fillRect(200,0,w,h)
+
+        let x = 0
+        let arr=['red','orange','yellow','green','cyan','blue','purple']
+        function run(){
+            x++;
+            c2d.fillStyle=arr[0]
+            c2d.fillRect(x,0,w,h)
+
+            c2d.fillStyle=arr[1]
+            c2d.fillRect(x,50,w,h)
+
+            c2d.fillStyle=arr[2]
+            c2d.fillRect(x,100,w,h)
+
+            c2d.fillStyle=arr[3]
+            c2d.fillRect(x,150,w,h)
+
+            c2d.fillStyle=arr[4]
+            c2d.fillRect(x,200,w,h)
+
+            c2d.fillStyle=arr[5]
+            c2d.fillRect(x,250,w,h)
+           
+            c2d.fillStyle=arr[6]
+            c2d.fillRect(x,300,w,h)
+            
+            c2d.fillStyle=arr[7]
+            c2d.fillRect(x,350,w,h)
+            
+            requestAnimationFrame(run)
+        }
+        run();
+    </script>
+</body>
+</html>

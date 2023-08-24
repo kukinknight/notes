@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        strong{
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>支付成功<strong>5</strong>秒后回到首页</p>
+
+    <script>
+     let p= document.querySelector('p')
+        let num  = 5
+     let Time =  setInterval(function(){
+         num--
+        p.innerHTML=`支付成功<strong>${num}</strong>秒后回到首页`
+         if(num<=0){
+            clearInterval(Time)
+            location.href = 'http://www.baidu.com'
+         }
+        },1000)
+    </script>
+</body>
+</html>

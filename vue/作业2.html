@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            font-weight: bold;
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<script src=https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js> </script>
+<body>
+    <div id="app">
+        <input type="text" v-model="name"  @keyup.enter="chage()">
+        <ul>
+            <li v-for="(item,index) in students" :class="{active: item ==name}" v-show="isshow">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: { 
+                name: '',
+                isshow:false,
+                students: ["陈世凡","罗欣宇","龙昌鑫","王坤澎","万磊","唐意","李钢武","许安明","王航","陈洋鑫","杨曦晨","李文轩","湛金梅","赵梦娜","伍湘瑾","张金玉","尹意凡","李根","邱龙权","邹远航","陈志杰","李灵","徐钰琳","李晓姣","刘云云","韩鑫","黄谦","邹阳","胡炉信","万铭武","杨伦","陈宇飞","陈迪","易晨阳","沈晶晶","艾文萱","卢云芳","车红丽","刘勇","罗彦颖","马超超","常良聪"]
+            },
+            methods: {
+                chage(){
+                   this.isshow=!this.isshow
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

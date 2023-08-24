@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="div1">
+		<p style="font-size:25px;">计数器: {{ counter }}</p>
+		<button @click="counter++" style="font-size:25px;">加1</button>
+		<p id="info"></p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#div1',
+			data: {
+				counter: 1
+			},
+			watch: {
+				counter(newValue, oldValue) {
+					alert('计数器值将发生变化：从' + oldValue + '变为' + newValue + '!');
+				}
+
+			}
+		});
+		vm.$watch('  counter  ', function (newValue, oldValue) {
+			document.getElementById(" info  ").innerHTML = "计数器修改前值为: " + oldValue + "，修改后值为: " + newValue;
+		});
+	</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+@keyframes animate {
+
+	/* 文字炫光 */
+	0%,
+	100% {
+		text-shadow: -1.5px -1.5px 0 #0ff, 1.5px 1.5px 0 #f00;
+	}
+
+	25% {
+		text-shadow: 1.5px 1.5px 0 #0ff, -1.5px -1.5px 0 #f00;
+	}
+
+	50% {
+		text-shadow: 1.5px -1.5px 0 #0ff, 1.5px -1.5px 0 #f00;
+	}
+
+	75% {
+		text-shadow: -1.5px 1.5px 0 #0ff, -1.5px 1.5px 0 #f00;
+	}
+}
+
+
+
+@keyframes aa {
+	0%{
+		transform: rotate(-1deg);
+	}
+	20%{
+		transform: rotate(1deg);
+	}
+	
+	
+	50%{
+		transform: rotate(-4deg);
+	}
+	
+	100%{
+		transform: rotate(4deg);
+	}
+	
+}
+
+
+
+@keyframes shake {
+
+	10%,
+	90% {
+
+		transform: translate3d(-1px, 0, 0);
+
+	}
+
+	20%,
+	80% {
+
+		transform: translate3d(2px, 0, 0);
+
+	}
+
+	30%,
+	50%,
+	70% {
+
+		transform: translate3d(-4px, 0, 0);
+
+	}
+
+	40%,
+	60% {
+
+		transform: translate3d(4px, 0, 0);
+
+	}
+
+}
+
+
+@keyframes bb {
+	10%{
+		border-top:0.2rem solid gold ;
+	}
+	30%{
+		border-right:0.2rem solid gold ;
+	}
+	60%{
+		border-bottom:0.2rem solid gold ;
+	}
+	90%{
+		border-left:0.2rem solid gold ;
+	}
+}

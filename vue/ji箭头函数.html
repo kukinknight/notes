@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj={
+            name:'菜嘘琨',
+            sing:function(){
+                console.log(this.name+'唱跳rap')
+            }
+        }
+           obj.sing();
+           window.name='坤坤'
+           var obj2={
+            name:'ikun',
+            dance:() =>{
+          console.log(this.name +'我爱坤坤')
+            }
+           }
+          obj2.dance();
+          var obj3={
+         name:'小黑子',
+         obj4:{
+            name:'爱坤',
+            rap:() =>{
+                console.log(this.name +'坤坤爱篮球')
+            }
+         },
+         hellow:function(){
+            var run=() =>{
+                console.log(this.name +'坤坤喜欢rap')
+            }
+            run();
+         }
+          }
+          obj3.obj4.rap();
+         obj3.hellow();
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 操作按钮是否可以点击:
+    // a 获取按钮点击状态:   DOM标签对象.disabled
+    // 总结:
+    // 1. 如果获取的结果是fale,代表当前可以点击的
+    // 2. 如果获取的结果是true,代标签当前按钮不能点击
+
+
+    // b设置按钮点击状态:   DOM标签对象.disabled = 布尔值;
+    // 总结:
+    // 1. 设置的值是true,代标签当前按钮不能点击,
+    // 2. 设置的值是fals,代标签当前按钮能点击,
+
+    // 代码演示:
+    let btn = document.querySelector('input');
+        btn.disabled = false;
+    console.log(btn.disabled);
+    </script>
+</body>
+</html>

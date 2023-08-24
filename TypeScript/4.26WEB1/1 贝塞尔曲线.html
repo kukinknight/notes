@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <style>canvas{background-color: pink;}</style>
+</head>
+<canvas width="1000" height="1000"></canvas>
+
+<script>
+let canvas = document.querySelector('canvas')
+let c2d = canvas.getContext('2d')
+
+//P2(100,100)  P3(350,350)
+let p2 ={x: 100,y:100}  
+let p3 ={x: 350,y:350}
+//主动画函数
+run()
+function run(){
+    //完成绘制
+    //让p2点运动
+    c2d.clearRect(0,0,1000,1000)    //清除画布
+    p2.x +=   Math.random()*10-5
+    p2.y +=   Math.random()*10-5
+    //绘制P2点
+
+    点(50,350)
+    点(p2.x,p2.y)
+    点(p3.x,p3.y)
+    // 绘制贝塞尔曲线 以下代码在QQ群
+    c2d.beginPath()
+       c2d.moveTo(50,350)
+       c2d.quadraticCurveTo(p2.x,p2.y,p3.x,p3.y)
+       c2d.stroke()
+       c2d.closePath()
+
+    requestAnimationFrame(run)
+}//run
+
+function 点(x,y){
+    c2d.beginPath()//开始路径
+            //arc(x,y,半径,起始弧度,结束弧度)
+
+            c2d.arc(x,y,6,0,2*Math.PI)
+            c2d.fillStyle= 'red'
+            c2d.fill()
+            c2d.closePath()
+    c2d.closePath()//结束路径
+}
+
+
+</script>
+
+
+
+
+
+
+

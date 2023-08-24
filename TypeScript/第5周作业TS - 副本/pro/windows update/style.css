@@ -1,0 +1,53 @@
+*{
+    margin:0;
+    padding:0;
+    color:white;
+}
+body{
+    background:black;
+    display:flex;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    position:absolute;
+    font-size:25px;
+}
+.rings{
+    width:50px;
+    height:50px;
+    /* border:1px solid white; */
+    position: absolute;
+    transform:rotate(45deg);
+}
+.rings span{
+    width:100%;
+    height:100%;
+    position:absolute;
+    animation:round 4s ease infinite calc(var(--d) * 0.2s)
+}
+.rings span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius: 50%;
+}
+@keyframes round{
+    100%{
+        transform:rotate(360deg)
+    }
+}
+.step {
+    transform:translateY(100px);
+    text-align:center;
+}
+.warning{
+    bottom:25px;
+}

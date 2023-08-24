@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in students" :key="index"><em>{{index+1}}</em>
+        <span>{{item.name}},{{item.age}}</span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    let vm = newVue({
+      el: '#app',
+      data: {
+        students: [
+          { name: '小刘', age: 18 },
+          { name: '小李', age: 20 }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

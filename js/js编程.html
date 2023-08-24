@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sum =0;
+        var datas = new Array(10,20,30,40,50,60);
+        1.数组要求
+        for(var i =0;i<datas.length;i++){
+            sum+=datas[i];
+        }
+        document.write(sum)
+
+        // 求数组的最大值
+         var max =datas[0];
+        for(var i =1;i<datas.length;i++){
+            if(max<datas[i]){
+                max=datas[i];
+          
+            }
+        }
+        document.write( '<br>'+max)
+
+    //    求数组的最小值
+         var min =datas[0];
+        for(var i =1;i<datas.length;i++){
+            if(min>datas[i]){
+                min=datas[i];
+          
+            }
+        }
+        document.write( '<br>'+max)
+
+        //正方形
+        for(var i =1;i<=5;i++){
+            for(var j =1;j<=5;j++){
+                document. write('*')
+            }
+        
+            document. write('<br>'+'*')
+        }
+        
+        for(var i =1;i<=5;i++){
+         for(var j =i;j<=5;j++){
+            document.write('*')
+         }
+         document.write('<br>'+'*')
+        }
+    
+        //九九乘法表
+        for(var i = 1 ; i<=9 ; i++ ){
+			   for(var j = 1; j<=i; j++){
+				 document.write('<span>'+j+'*'+i+'='+j*i+'</span>');   
+			   }
+			    document.write('<br />');
+		   }
+    </script>
+</body>
+</html>

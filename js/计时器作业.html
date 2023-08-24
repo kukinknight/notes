@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myclock"></div>
+    <script>
+        function clock(){
+      var today = new Date()
+      var year = today.getFullYear();
+      var mouth = today.getMonth()+1;
+      var day = today.getDate();
+
+      var hours =today.getHours();
+      var minute =today.getMinutes();
+      var socend =today.getSeconds()
+
+      var apm ='AM';
+      if(hours>12){
+        hours=hours-12;
+        apm='AM';
+
+      }
+    var weekday =0;
+    switch(today.getDate){
+        case 0 :
+        weekday='星期日'
+        break;
+
+        case 1 :
+        weekday='星期一'
+        break;
+
+        case 2 :
+        weekday='星期二'
+        break;
+
+        case 3 :
+        weekday='星期三'
+        break;
+
+        case 4 :
+        weekday='星期四'
+        break;
+
+        case 5 :
+        weekday='星期五'
+        break;
+
+        case 6 :
+        weekday='星期六'
+        break;
+    }
+    document.getElementById('myclock').innerHTML='<h2>你好，欢迎访问贵美商城</h2> <h2>'+year+'年'+mouth+'月'+day+'日 &nbsp;'+hours+':'+minute+':'+second+'&nbsp;'+amp+'&nbsp;'+weekday+'</h2'>
+        } 
+    var mytime = setInterval('clock()',1000)
+    </script>
+</body>
+</html>

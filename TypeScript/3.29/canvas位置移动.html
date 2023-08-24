@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          canvas{
+            border: 1px solid black;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script src="./监听键盘.js"></script>
+    <script src="./green.js"></script>
+    <script>
+        let canvas = document.querySelector('canvas')
+        let c2d = canvas.getContext('2d')
+
+        let 露露 = new Green(200,200)
+        露露.draw(c2d,1)
+
+        run()
+        function run(){
+            露露.draw(c2d,1)
+            requestAnimationFrame(run)
+        }
+    </script>
+</body>
+</html>

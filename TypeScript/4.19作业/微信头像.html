@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myInfo{
+            display: flex;
+        }
+
+        div{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="myID" value="owwX5slfb29Fg-abFjxvu1eHhglE">
+    <img src=".." alt="" id="myImg">
+    <div id="myInfo">显示基本信息</div>
+    <button id="btn">获取信息</button>
+</body>
+<script>
+    let API = `https://iptv.hbtv.com.cn/app/wx-answer/#/`
+    btn.onclick = function(){
+        let unionId = myID.value
+
+        let URL = API+`user/${unionId}`
+        console.log(URL)
+        test(URL)
+    }//btn
+
+    async function test(URL){
+        let 请求 =await fetch(URL)
+        let 数据 = await 请求.json()
+        console.log(请求)
+        console.log(数据)
+        myImg.src = 数据.data.wxInfo.avater //设置头像
+
+        myInfo.innerHTML+=`
+        <div>
+            <img src ="${数据.data.wxInfo.avater}">
+            <p> 姓名:${数据.data.name}</p>
+            <p> 城市:${数据.data.orgName}</p>
+            <p> 电话:${数据.data.phone}</p>
+        `
+    }
+</script>
+</html>

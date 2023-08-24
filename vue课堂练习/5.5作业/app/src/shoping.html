@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+          width:500px;
+          height:250px;
+          border: 2px solid #999;
+          border-radius: 10px;
+          margin:40px auto;
+          padding: 0 20px;
+          position: relative;
+        }
+    
+        header {
+          text-align: right;
+          border-bottom: 2px solid #999;
+        }
+        ul,li {
+          margin:0;
+          padding:0;
+        }
+        
+        li {
+          line-height: 1.8;
+          list-style-type: none;
+        }
+    
+        .cart {
+          width:180px;
+          border: 2px dashed #999;
+          position: absolute;
+          padding:10px;
+          top:70px;
+          right:20px;
+          background-color: #ddd;
+        }
+      </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <p>购物车中商品数量:{{cartCount}}</p>
+        </header>
+        <div class="product-list">
+            <product name="华为Mate 40 Pro"></product>
+            <product name="iphone 12 Pro"></product>
+            <product name="小米11 UItra"></product>
+            <product name="vivo s9"></product>
+        </div>
+        <cart></cart>
+    </div>
+    <script>
+        let store ={
+            state:{
+                products:[]
+            },
+            getProducts(){
+                return this.state.products
+            },
+            addToCart(name){
+                if(!this.state.products.includes(name))
+                this.state.products.push(name)
+            },
+            checkOut(){
+                this.state.products=[]
+            }
+        }
+
+        // product组件
+        let product =vue.component('product',{
+            data(){
+                return{store}
+            },
+            props:['name'],
+            methods: {
+                addToCart(){
+                    this.store.addToCart(this.name)
+                }
+            },
+            template:`
+              <p :name="name">
+                {{name}}
+                <button @click="addToCart">加入购物车</button>
+                </p>
+            `,
+
+        })
+        let cart = Vue.component('cart',{
+             data(){
+                return{
+                    store
+                }
+             },
+             methods:{
+                checkOut(){
+                    this.store.checkOut()
+                }
+             },
+             template:`
+              <div class="cart">
+                <ul>
+                    <li v-for="item in store.getProducts()">{{item}}</li>
+                    </ul>
+                    <button @click="checkOut" >确认下单</button>
+                    </div>
+             `
+})
+
+    const vm = new Vue({
+        el:'#app',
+    data:{store},
+     computed:{
+        cartCount(){
+            return this.store .getProducts().length
+        }
+     }
+    })
+
+    </script>
+</body>
+</html>

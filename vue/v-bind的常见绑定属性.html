@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title> 
+    <style>
+        li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 0 5px;
+            line-height: 30px;
+            cursor: pointer;
+            float: left;
+        }   
+        .select{
+           background-color: red;
+        }
+            </style>
+</head>
+<body>
+    <div id="root">
+        <ul>
+          <li :class ="index== indexof?'selected':''" v-on:click="changeTab(index)"  v-for="(item,index) in dataList">{{item}} </li>
+        </ul>
+    </div>
+    <script>
+    var vm = new Vue({
+        el:'#root',
+        data:{
+          indexof:0,
+          dataList:['用户管理','配置管理','角色管理','定时任务补偿']
+
+        },
+        methods:{
+        changeTab(){
+            this.indexof = i   
+            }
+        }
+    })
+    </script>
+</body>
+</html>

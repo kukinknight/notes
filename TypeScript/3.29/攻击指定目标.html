@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         canvas{
+            border: 1px solid black;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script src="./粒子.js"></script>
+    <script>
+    let canvas =document.querySelector('canvas')
+    let c2d = canvas.getContext('2d')
+    let nowTime = 0
+    let arr = []
+    let num =20
+    for(let i =100;i<100+num;i++){
+        for(let j =100;j<100+num;){
+            let one ={
+                x:j,
+                y:i
+            }
+            arr.push(new P(one.x,one.y))
+        }
+    }
+
+    let A = new P(400,300)
+    let C = new P(100,100,'green')
+
+        run()
+        function run(t){
+            nowTime = t/1000
+
+            c2d.fillStyle = 'rgba(0,0,0,0.1)'
+            c2d.fillRect(0,0,canvas.width,canvas.height)
+            //进攻目标
+            c2d.fillStyle = 'red'
+            c2d.fillRect(500,500,10,10) //(500,500) 宽度10
+
+              //出生点
+              c2d.fillStyle = 'white'
+              c2d.strokeRect(100-1,100-1,52,52)
+
+              //绘制粒子
+              for(let one of arr){
+                one.goal(500,500)
+                one.draw(c2d,nowTime)
+              }
+
+            requestAnimationFrame(run)
+            A.goal(500,500)
+            C.goal(500,500)
+
+            A.draw(c2d,nowTime)
+            C.draw(c2d,nowTime)
+
+        }
+    </script>
+</body>
+</html>
